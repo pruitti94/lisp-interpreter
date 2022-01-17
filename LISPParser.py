@@ -22,7 +22,7 @@ def p_bool_2(p):
   p[0] = ['bool',p[1]]
 
 def p_list_1(p):
-  'list : LPARENT lisp list RPARENT'
+  'list : LPARENT lisp lisp RPARENT'
   p[0] = ['list', p[2], p[3]]
 
 def p_lisp_1(p):

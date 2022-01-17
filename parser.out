@@ -22,7 +22,7 @@ Rule 2     lispStart -> bool SEMI
 Rule 3     lispStart -> list SEMI
 Rule 4     bool -> TRUE
 Rule 5     bool -> FALSE
-Rule 6     list -> LPARENT lisp list RPARENT
+Rule 6     list -> LPARENT lisp lisp RPARENT
 Rule 7     lisp -> NUMBER
 Rule 8     lisp -> LPARENT PLUS lisp lisp RPARENT
 Rule 9     lisp -> LPARENT MINUS lisp lisp RPARENT
@@ -57,7 +57,348 @@ error                :
 Nonterminals, with rules where they appear
 
 bool                 : 2
-lisp                 : 1 6 8 8 9 9 10 10 11 11
+lisp                 : 1 6 6 8 8 9 9 10 10 11 11
 lispStart            : 0
-list                 : 3 6
+list                 : 3
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . lispStart
+    (1) lispStart -> . lisp SEMI
+    (2) lispStart -> . bool SEMI
+    (3) lispStart -> . list SEMI
+    (7) lisp -> . NUMBER
+    (8) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (9) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (10) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (11) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (4) bool -> . TRUE
+    (5) bool -> . FALSE
+    (6) list -> . LPARENT lisp lisp RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 6
+    TRUE            shift and go to state 7
+    FALSE           shift and go to state 8
+
+    lispStart                      shift and go to state 1
+    lisp                           shift and go to state 2
+    bool                           shift and go to state 3
+    list                           shift and go to state 4
+
+state 1
+
+    (0) S' -> lispStart .
+
+
+
+state 2
+
+    (1) lispStart -> lisp . SEMI
+
+    SEMI            shift and go to state 9
+
+
+state 3
+
+    (2) lispStart -> bool . SEMI
+
+    SEMI            shift and go to state 10
+
+
+state 4
+
+    (3) lispStart -> list . SEMI
+
+    SEMI            shift and go to state 11
+
+
+state 5
+
+    (7) lisp -> NUMBER .
+
+    SEMI            reduce using rule 7 (lisp -> NUMBER .)
+    NUMBER          reduce using rule 7 (lisp -> NUMBER .)
+    LPARENT         reduce using rule 7 (lisp -> NUMBER .)
+    RPARENT         reduce using rule 7 (lisp -> NUMBER .)
+
+
+state 6
+
+    (8) lisp -> LPARENT . PLUS lisp lisp RPARENT
+    (9) lisp -> LPARENT . MINUS lisp lisp RPARENT
+    (10) lisp -> LPARENT . TIMES lisp lisp RPARENT
+    (11) lisp -> LPARENT . DIV lisp lisp RPARENT
+    (6) list -> LPARENT . lisp lisp RPARENT
+    (7) lisp -> . NUMBER
+    (8) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (9) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (10) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (11) lisp -> . LPARENT DIV lisp lisp RPARENT
+
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 15
+    TIMES           shift and go to state 16
+    DIV             shift and go to state 17
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 12
+
+    lisp                           shift and go to state 14
+
+state 7
+
+    (4) bool -> TRUE .
+
+    SEMI            reduce using rule 4 (bool -> TRUE .)
+
+
+state 8
+
+    (5) bool -> FALSE .
+
+    SEMI            reduce using rule 5 (bool -> FALSE .)
+
+
+state 9
+
+    (1) lispStart -> lisp SEMI .
+
+    $end            reduce using rule 1 (lispStart -> lisp SEMI .)
+
+
+state 10
+
+    (2) lispStart -> bool SEMI .
+
+    $end            reduce using rule 2 (lispStart -> bool SEMI .)
+
+
+state 11
+
+    (3) lispStart -> list SEMI .
+
+    $end            reduce using rule 3 (lispStart -> list SEMI .)
+
+
+state 12
+
+    (8) lisp -> LPARENT . PLUS lisp lisp RPARENT
+    (9) lisp -> LPARENT . MINUS lisp lisp RPARENT
+    (10) lisp -> LPARENT . TIMES lisp lisp RPARENT
+    (11) lisp -> LPARENT . DIV lisp lisp RPARENT
+
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 15
+    TIMES           shift and go to state 16
+    DIV             shift and go to state 17
+
+
+state 13
+
+    (8) lisp -> LPARENT PLUS . lisp lisp RPARENT
+    (7) lisp -> . NUMBER
+    (8) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (9) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (10) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (11) lisp -> . LPARENT DIV lisp lisp RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 12
+
+    lisp                           shift and go to state 18
+
+state 14
+
+    (6) list -> LPARENT lisp . lisp RPARENT
+    (7) lisp -> . NUMBER
+    (8) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (9) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (10) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (11) lisp -> . LPARENT DIV lisp lisp RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 12
+
+    lisp                           shift and go to state 19
+
+state 15
+
+    (9) lisp -> LPARENT MINUS . lisp lisp RPARENT
+    (7) lisp -> . NUMBER
+    (8) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (9) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (10) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (11) lisp -> . LPARENT DIV lisp lisp RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 12
+
+    lisp                           shift and go to state 20
+
+state 16
+
+    (10) lisp -> LPARENT TIMES . lisp lisp RPARENT
+    (7) lisp -> . NUMBER
+    (8) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (9) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (10) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (11) lisp -> . LPARENT DIV lisp lisp RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 12
+
+    lisp                           shift and go to state 21
+
+state 17
+
+    (11) lisp -> LPARENT DIV . lisp lisp RPARENT
+    (7) lisp -> . NUMBER
+    (8) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (9) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (10) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (11) lisp -> . LPARENT DIV lisp lisp RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 12
+
+    lisp                           shift and go to state 22
+
+state 18
+
+    (8) lisp -> LPARENT PLUS lisp . lisp RPARENT
+    (7) lisp -> . NUMBER
+    (8) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (9) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (10) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (11) lisp -> . LPARENT DIV lisp lisp RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 12
+
+    lisp                           shift and go to state 23
+
+state 19
+
+    (6) list -> LPARENT lisp lisp . RPARENT
+
+    RPARENT         shift and go to state 24
+
+
+state 20
+
+    (9) lisp -> LPARENT MINUS lisp . lisp RPARENT
+    (7) lisp -> . NUMBER
+    (8) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (9) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (10) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (11) lisp -> . LPARENT DIV lisp lisp RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 12
+
+    lisp                           shift and go to state 25
+
+state 21
+
+    (10) lisp -> LPARENT TIMES lisp . lisp RPARENT
+    (7) lisp -> . NUMBER
+    (8) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (9) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (10) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (11) lisp -> . LPARENT DIV lisp lisp RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 12
+
+    lisp                           shift and go to state 26
+
+state 22
+
+    (11) lisp -> LPARENT DIV lisp . lisp RPARENT
+    (7) lisp -> . NUMBER
+    (8) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (9) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (10) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (11) lisp -> . LPARENT DIV lisp lisp RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 12
+
+    lisp                           shift and go to state 27
+
+state 23
+
+    (8) lisp -> LPARENT PLUS lisp lisp . RPARENT
+
+    RPARENT         shift and go to state 28
+
+
+state 24
+
+    (6) list -> LPARENT lisp lisp RPARENT .
+
+    SEMI            reduce using rule 6 (list -> LPARENT lisp lisp RPARENT .)
+
+
+state 25
+
+    (9) lisp -> LPARENT MINUS lisp lisp . RPARENT
+
+    RPARENT         shift and go to state 29
+
+
+state 26
+
+    (10) lisp -> LPARENT TIMES lisp lisp . RPARENT
+
+    RPARENT         shift and go to state 30
+
+
+state 27
+
+    (11) lisp -> LPARENT DIV lisp lisp . RPARENT
+
+    RPARENT         shift and go to state 31
+
+
+state 28
+
+    (8) lisp -> LPARENT PLUS lisp lisp RPARENT .
+
+    SEMI            reduce using rule 8 (lisp -> LPARENT PLUS lisp lisp RPARENT .)
+    NUMBER          reduce using rule 8 (lisp -> LPARENT PLUS lisp lisp RPARENT .)
+    LPARENT         reduce using rule 8 (lisp -> LPARENT PLUS lisp lisp RPARENT .)
+    RPARENT         reduce using rule 8 (lisp -> LPARENT PLUS lisp lisp RPARENT .)
+
+
+state 29
+
+    (9) lisp -> LPARENT MINUS lisp lisp RPARENT .
+
+    SEMI            reduce using rule 9 (lisp -> LPARENT MINUS lisp lisp RPARENT .)
+    NUMBER          reduce using rule 9 (lisp -> LPARENT MINUS lisp lisp RPARENT .)
+    LPARENT         reduce using rule 9 (lisp -> LPARENT MINUS lisp lisp RPARENT .)
+    RPARENT         reduce using rule 9 (lisp -> LPARENT MINUS lisp lisp RPARENT .)
+
+
+state 30
+
+    (10) lisp -> LPARENT TIMES lisp lisp RPARENT .
+
+    SEMI            reduce using rule 10 (lisp -> LPARENT TIMES lisp lisp RPARENT .)
+    NUMBER          reduce using rule 10 (lisp -> LPARENT TIMES lisp lisp RPARENT .)
+    LPARENT         reduce using rule 10 (lisp -> LPARENT TIMES lisp lisp RPARENT .)
+    RPARENT         reduce using rule 10 (lisp -> LPARENT TIMES lisp lisp RPARENT .)
+
+
+state 31
+
+    (11) lisp -> LPARENT DIV lisp lisp RPARENT .
+
+    SEMI            reduce using rule 11 (lisp -> LPARENT DIV lisp lisp RPARENT .)
+    NUMBER          reduce using rule 11 (lisp -> LPARENT DIV lisp lisp RPARENT .)
+    LPARENT         reduce using rule 11 (lisp -> LPARENT DIV lisp lisp RPARENT .)
+    RPARENT         reduce using rule 11 (lisp -> LPARENT DIV lisp lisp RPARENT .)
 

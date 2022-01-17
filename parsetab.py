@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'AND CAR CAR CDR CDR CONS CONS DIV FALSE GREATER GREATEREQUAL IF LESS LESSEQUAL LPARENT MINUS NOTEQUAL NUMBER OR PLUS RPARENT SEMI TIMES TRUElispStart : lisp SEMIlispStart : bool SEMIlispStart : list SEMIbool : TRUEbool : FALSElist : LPARENT lisp lisp lisp RPARENTlisp : NUMBERlisp : LPARENT PLUS lisp lisp RPARENTlisp : LPARENT MINUS lisp lisp RPARENTlisp : LPARENT TIMES lisp lisp RPARENTlisp : LPARENT DIV lisp lisp RPARENT'
+_lr_signature = 'AND CAR CAR CDR CDR CONS CONS DIV FALSE GREATER GREATEREQUAL IF LESS LESSEQUAL LPARENT MINUS NOTEQUAL NUMBER OR PLUS RPARENT SEMI TIMES TRUElispStart : lisp SEMIlispStart : bool SEMIlispStart : list SEMIbool : TRUEbool : FALSElist : LPARENT lisp lisp RPARENTlisp : NUMBERlisp : LPARENT PLUS lisp lisp RPARENTlisp : LPARENT MINUS lisp lisp RPARENTlisp : LPARENT TIMES lisp lisp RPARENTlisp : LPARENT DIV lisp lisp RPARENT'
     
-_lr_action_items = {'NUMBER':([0,5,6,13,14,15,16,17,18,19,20,21,22,28,30,31,32,],[5,-7,5,5,5,5,5,5,5,5,5,5,5,-8,-9,-10,-11,]),'LPARENT':([0,5,6,13,14,15,16,17,18,19,20,21,22,28,30,31,32,],[6,-7,12,12,12,12,12,12,12,12,12,12,12,-8,-9,-10,-11,]),'TRUE':([0,],[7,]),'FALSE':([0,],[8,]),'$end':([1,9,10,11,],[0,-1,-2,-3,]),'SEMI':([2,3,4,5,7,8,28,29,30,31,32,],[9,10,11,-7,-4,-5,-8,-6,-9,-10,-11,]),'RPARENT':([5,23,24,25,26,27,28,30,31,32,],[-7,28,29,30,31,32,-8,-9,-10,-11,]),'PLUS':([6,12,],[13,13,]),'MINUS':([6,12,],[15,15,]),'TIMES':([6,12,],[16,16,]),'DIV':([6,12,],[17,17,]),}
+_lr_action_items = {'NUMBER':([0,5,6,13,14,15,16,17,18,20,21,22,28,29,30,31,],[5,-7,5,5,5,5,5,5,5,5,5,5,-8,-9,-10,-11,]),'LPARENT':([0,5,6,13,14,15,16,17,18,20,21,22,28,29,30,31,],[6,-7,12,12,12,12,12,12,12,12,12,12,-8,-9,-10,-11,]),'TRUE':([0,],[7,]),'FALSE':([0,],[8,]),'$end':([1,9,10,11,],[0,-1,-2,-3,]),'SEMI':([2,3,4,5,7,8,24,28,29,30,31,],[9,10,11,-7,-4,-5,-6,-8,-9,-10,-11,]),'RPARENT':([5,19,23,25,26,27,28,29,30,31,],[-7,24,28,29,30,31,-8,-9,-10,-11,]),'PLUS':([6,12,],[13,13,]),'MINUS':([6,12,],[15,15,]),'TIMES':([6,12,],[16,16,]),'DIV':([6,12,],[17,17,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'lispStart':([0,],[1,]),'lisp':([0,6,13,14,15,16,17,18,19,20,21,22,],[2,14,18,19,20,21,22,23,24,25,26,27,]),'bool':([0,],[3,]),'list':([0,],[4,]),}
+_lr_goto_items = {'lispStart':([0,],[1,]),'lisp':([0,6,13,14,15,16,17,18,20,21,22,],[2,14,18,19,20,21,22,23,25,26,27,]),'bool':([0,],[3,]),'list':([0,],[4,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -32,7 +32,7 @@ _lr_productions = [
   ('lispStart -> list SEMI','lispStart',2,'p_lispStart_3','LISPParser.py',13),
   ('bool -> TRUE','bool',1,'p_bool_1','LISPParser.py',17),
   ('bool -> FALSE','bool',1,'p_bool_2','LISPParser.py',21),
-  ('list -> LPARENT lisp lisp lisp RPARENT','list',5,'p_list_1','LISPParser.py',25),
+  ('list -> LPARENT lisp lisp RPARENT','list',4,'p_list_1','LISPParser.py',25),
   ('lisp -> NUMBER','lisp',1,'p_lisp_1','LISPParser.py',29),
   ('lisp -> LPARENT PLUS lisp lisp RPARENT','lisp',5,'p_lisp_2','LISPParser.py',34),
   ('lisp -> LPARENT MINUS lisp lisp RPARENT','lisp',5,'p_lisp_3','LISPParser.py',39),
