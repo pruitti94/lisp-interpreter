@@ -2,7 +2,7 @@ import ply.lex as lex
 
 reserved = { 'if': 'IF', 'and': 'AND', 'or': 'OR', 'car': 'CAR', 'cdr': 'CDR', 'cons': 'CONS', 'true': 'TRUE', 'false': 'FALSE' }
 
-tokens = ['LPARENT','RPARENT','SEMI','CAR','CDR','CONS','GREATER','GREATEREQUAL','LESS','LESSEQUAL','NOTEQUAL','PLUS','MINUS','TIMES','DIV','NUMBER'] + \
+tokens = ['LPARENT','RPARENT','SEMI','CAR','CDR','CONS','GREATER','GREATEREQUAL','LESS','LESSEQUAL','NOTEQUAL','EQUAL','PLUS','MINUS','TIMES','DIV','NUMBER'] + \
   list(reserved.values())
 
 t_TRUE = r'[tT][rR][uU][eE]'
@@ -21,6 +21,7 @@ t_GREATEREQUAL =r'\>='
 t_LESS = r'\<'
 t_LESSEQUAL = r'\<='
 t_NOTEQUAL = r'\<\>'
+t_EQUAL = r'\='
 t_PLUS = r'\+'
 t_MINUS = r'-'
 t_TIMES = r'\*'

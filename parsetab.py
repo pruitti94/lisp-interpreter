@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'AND CAR CAR CDR CDR CONS CONS DIV FALSE GREATER GREATEREQUAL IF LESS LESSEQUAL LPARENT MINUS NOTEQUAL NUMBER OR PLUS RPARENT SEMI TIMES TRUElispStart : lisp SEMIlispStart : bool SEMIlispStart : list SEMIbool : TRUEbool : FALSElist : LPARENT lisp lisp RPARENTlisp : NUMBERlisp : LPARENT PLUS lisp lisp RPARENTlisp : LPARENT MINUS lisp lisp RPARENTlisp : LPARENT TIMES lisp lisp RPARENTlisp : LPARENT DIV lisp lisp RPARENT'
+_lr_signature = 'AND CAR CAR CDR CDR CONS CONS DIV EQUAL FALSE GREATER GREATEREQUAL IF LESS LESSEQUAL LPARENT MINUS NOTEQUAL NUMBER OR PLUS RPARENT SEMI TIMES TRUElispStart : lisp SEMIlispStart : bool SEMIlispStart : list SEMIlisp : NUMBERlisp : LPARENT PLUS lisp lisp RPARENTlisp : LPARENT MINUS lisp lisp RPARENTlisp : LPARENT TIMES lisp lisp RPARENTlisp : LPARENT DIV lisp lisp RPARENTlisp : LPARENT IF bool lisp lisp RPARENTlisp : LPARENT CAR list RPARENTbool : TRUEbool : FALSEbool : LPARENT GREATER lisp lisp RPARENTbool : LPARENT GREATEREQUAL lisp lisp RPARENTbool : LPARENT LESS lisp lisp RPARENTbool : LPARENT LESSEQUAL lisp lisp RPARENTbool : LPARENT NOTEQUAL lisp lisp RPARENTbool : LPARENT EQUAL lisp lisp RPARENTbool : LPARENT AND bool bool RPARENTlist : LPARENT list RPARENTlist : lisplist : lisp listlist : LPARENT CONS lisp list RPARENTlist : LPARENT CDR list RPARENT'
     
-_lr_action_items = {'NUMBER':([0,5,6,13,14,15,16,17,18,20,21,22,28,29,30,31,],[5,-7,5,5,5,5,5,5,5,5,5,5,-8,-9,-10,-11,]),'LPARENT':([0,5,6,13,14,15,16,17,18,20,21,22,28,29,30,31,],[6,-7,12,12,12,12,12,12,12,12,12,12,-8,-9,-10,-11,]),'TRUE':([0,],[7,]),'FALSE':([0,],[8,]),'$end':([1,9,10,11,],[0,-1,-2,-3,]),'SEMI':([2,3,4,5,7,8,24,28,29,30,31,],[9,10,11,-7,-4,-5,-6,-8,-9,-10,-11,]),'RPARENT':([5,19,23,25,26,27,28,29,30,31,],[-7,24,28,29,30,31,-8,-9,-10,-11,]),'PLUS':([6,12,],[13,13,]),'MINUS':([6,12,],[15,15,]),'TIMES':([6,12,],[16,16,]),'DIV':([6,12,],[17,17,]),}
+_lr_action_items = {'NUMBER':([0,2,5,6,7,8,9,12,15,16,17,18,20,22,23,24,25,26,27,29,30,32,33,34,35,37,40,41,42,43,44,45,47,53,54,64,65,66,67,69,70,71,72,73,74,75,77,],[5,5,-4,5,-11,-12,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,-10,-5,-6,-7,-8,-13,-14,-15,-16,-17,-18,-19,-9,]),'LPARENT':([0,2,5,6,7,8,9,12,15,16,17,18,19,20,22,23,24,25,26,27,28,29,30,32,33,34,35,37,40,41,42,43,44,45,46,47,53,54,64,65,66,67,69,70,71,72,73,74,75,77,],[6,12,-4,12,-11,-12,12,12,31,31,31,31,36,12,31,31,31,31,31,31,36,31,12,31,31,31,31,31,31,31,31,31,31,31,36,12,31,-10,-5,-6,-7,-8,-13,-14,-15,-16,-17,-18,-19,-9,]),'TRUE':([0,7,8,19,28,46,69,70,71,72,73,74,75,],[7,-11,-12,7,7,7,-13,-14,-15,-16,-17,-18,-19,]),'FALSE':([0,7,8,19,28,46,69,70,71,72,73,74,75,],[8,-11,-12,8,8,8,-13,-14,-15,-16,-17,-18,-19,]),'$end':([1,10,13,14,],[0,-1,-2,-3,]),'SEMI':([2,3,4,5,7,8,9,11,39,54,63,64,65,66,67,69,70,71,72,73,74,75,76,77,],[10,13,14,-4,-11,-12,-21,-22,-20,-10,-24,-5,-6,-7,-8,-13,-14,-15,-16,-17,-18,-19,-23,-9,]),'RPARENT':([5,7,8,9,11,21,38,39,48,49,50,51,52,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,],[-4,-11,-12,-21,-22,39,54,-20,63,64,65,66,67,-10,69,70,71,72,73,74,75,76,-24,-5,-6,-7,-8,77,-13,-14,-15,-16,-17,-18,-19,-23,-9,]),'PLUS':([6,12,31,],[15,15,15,]),'MINUS':([6,12,31,],[16,16,16,]),'TIMES':([6,12,31,],[17,17,17,]),'DIV':([6,12,31,],[18,18,18,]),'IF':([6,12,31,],[19,19,19,]),'CAR':([6,12,31,],[20,20,20,]),'GREATER':([6,36,],[22,22,]),'GREATEREQUAL':([6,36,],[23,23,]),'LESS':([6,36,],[24,24,]),'LESSEQUAL':([6,36,],[25,25,]),'NOTEQUAL':([6,36,],[26,26,]),'EQUAL':([6,36,],[27,27,]),'AND':([6,36,],[28,28,]),'CONS':([6,12,],[29,29,]),'CDR':([6,12,],[30,30,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'lispStart':([0,],[1,]),'lisp':([0,6,13,14,15,16,17,18,20,21,22,],[2,14,18,19,20,21,22,23,25,26,27,]),'bool':([0,],[3,]),'list':([0,],[4,]),}
+_lr_goto_items = {'lispStart':([0,],[1,]),'lisp':([0,2,6,9,12,15,16,17,18,20,22,23,24,25,26,27,29,30,32,33,34,35,37,40,41,42,43,44,45,47,53,],[2,9,9,9,9,32,33,34,35,9,40,41,42,43,44,45,47,9,49,50,51,52,53,55,56,57,58,59,60,9,68,]),'bool':([0,19,28,46,],[3,37,46,61,]),'list':([0,2,6,9,12,20,30,47,],[4,11,21,11,21,38,48,62,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,15 +27,28 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> lispStart","S'",1,None,None,None),
-  ('lispStart -> lisp SEMI','lispStart',2,'p_lispStart_1','LISPParser.py',5),
-  ('lispStart -> bool SEMI','lispStart',2,'p_lispStart_2','LISPParser.py',9),
-  ('lispStart -> list SEMI','lispStart',2,'p_lispStart_3','LISPParser.py',13),
-  ('bool -> TRUE','bool',1,'p_bool_1','LISPParser.py',17),
-  ('bool -> FALSE','bool',1,'p_bool_2','LISPParser.py',21),
-  ('list -> LPARENT lisp lisp RPARENT','list',4,'p_list_1','LISPParser.py',25),
-  ('lisp -> NUMBER','lisp',1,'p_lisp_1','LISPParser.py',29),
-  ('lisp -> LPARENT PLUS lisp lisp RPARENT','lisp',5,'p_lisp_2','LISPParser.py',34),
+  ('lispStart -> lisp SEMI','lispStart',2,'p_lispStart_1','LISPParser.py',8),
+  ('lispStart -> bool SEMI','lispStart',2,'p_lispStart_2','LISPParser.py',12),
+  ('lispStart -> list SEMI','lispStart',2,'p_lispStart_3','LISPParser.py',16),
+  ('lisp -> NUMBER','lisp',1,'p_lisp_1','LISPParser.py',27),
+  ('lisp -> LPARENT PLUS lisp lisp RPARENT','lisp',5,'p_lisp_2','LISPParser.py',33),
   ('lisp -> LPARENT MINUS lisp lisp RPARENT','lisp',5,'p_lisp_3','LISPParser.py',39),
-  ('lisp -> LPARENT TIMES lisp lisp RPARENT','lisp',5,'p_lisp_4','LISPParser.py',44),
-  ('lisp -> LPARENT DIV lisp lisp RPARENT','lisp',5,'p_lisp_5','LISPParser.py',49),
+  ('lisp -> LPARENT TIMES lisp lisp RPARENT','lisp',5,'p_lisp_4','LISPParser.py',45),
+  ('lisp -> LPARENT DIV lisp lisp RPARENT','lisp',5,'p_lisp_5','LISPParser.py',51),
+  ('lisp -> LPARENT IF bool lisp lisp RPARENT','lisp',6,'p_lisp_6','LISPParser.py',57),
+  ('lisp -> LPARENT CAR list RPARENT','lisp',4,'p_lisp_7','LISPParser.py',62),
+  ('bool -> TRUE','bool',1,'p_bool_1','LISPParser.py',75),
+  ('bool -> FALSE','bool',1,'p_bool_2','LISPParser.py',81),
+  ('bool -> LPARENT GREATER lisp lisp RPARENT','bool',5,'p_bool_3','LISPParser.py',87),
+  ('bool -> LPARENT GREATEREQUAL lisp lisp RPARENT','bool',5,'p_bool_4','LISPParser.py',93),
+  ('bool -> LPARENT LESS lisp lisp RPARENT','bool',5,'p_bool_5','LISPParser.py',99),
+  ('bool -> LPARENT LESSEQUAL lisp lisp RPARENT','bool',5,'p_bool_6','LISPParser.py',105),
+  ('bool -> LPARENT NOTEQUAL lisp lisp RPARENT','bool',5,'p_bool_7','LISPParser.py',111),
+  ('bool -> LPARENT EQUAL lisp lisp RPARENT','bool',5,'p_bool_8','LISPParser.py',117),
+  ('bool -> LPARENT AND bool bool RPARENT','bool',5,'p_bool_9','LISPParser.py',123),
+  ('list -> LPARENT list RPARENT','list',3,'p_list_1','LISPParser.py',132),
+  ('list -> lisp','list',1,'p_list_2','LISPParser.py',136),
+  ('list -> lisp list','list',2,'p_list_3','LISPParser.py',140),
+  ('list -> LPARENT CONS lisp list RPARENT','list',5,'p_list_5','LISPParser.py',145),
+  ('list -> LPARENT CDR list RPARENT','list',4,'p_list_6','LISPParser.py',150),
 ]
