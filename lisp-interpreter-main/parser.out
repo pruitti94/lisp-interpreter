@@ -1,0 +1,1176 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    OR
+
+Grammar
+
+Rule 0     S' -> lispStart
+Rule 1     lispStart -> lisp SEMI
+Rule 2     lispStart -> bool SEMI
+Rule 3     lispStart -> list SEMI
+Rule 4     lisp -> NUMBER
+Rule 5     lisp -> LPARENT PLUS lisp lisp RPARENT
+Rule 6     lisp -> LPARENT MINUS lisp lisp RPARENT
+Rule 7     lisp -> LPARENT TIMES lisp lisp RPARENT
+Rule 8     lisp -> LPARENT DIV lisp lisp RPARENT
+Rule 9     lisp -> LPARENT IF bool lisp lisp RPARENT
+Rule 10    lisp -> LPARENT CAR list RPARENT
+Rule 11    bool -> TRUE
+Rule 12    bool -> FALSE
+Rule 13    bool -> LPARENT GREATER lisp lisp RPARENT
+Rule 14    bool -> LPARENT GREATEREQUAL lisp lisp RPARENT
+Rule 15    bool -> LPARENT LESS lisp lisp RPARENT
+Rule 16    bool -> LPARENT LESSEQUAL lisp lisp RPARENT
+Rule 17    bool -> LPARENT NOTEQUAL lisp lisp RPARENT
+Rule 18    bool -> LPARENT EQUAL lisp lisp RPARENT
+Rule 19    bool -> LPARENT AND bool bool RPARENT
+Rule 20    list -> LPARENT list RPARENT
+Rule 21    list -> lisp
+Rule 22    list -> lisp list
+Rule 23    list -> LPARENT CONS lisp list RPARENT
+Rule 24    list -> LPARENT CDR list RPARENT
+Rule 25    list -> EMPTY
+
+Terminals, with rules where they appear
+
+AND                  : 19
+CAR                  : 10
+CDR                  : 24
+CONS                 : 23
+DIV                  : 8
+EMPTY                : 25
+EQUAL                : 18
+FALSE                : 12
+GREATER              : 13
+GREATEREQUAL         : 14
+IF                   : 9
+LESS                 : 15
+LESSEQUAL            : 16
+LPARENT              : 5 6 7 8 9 10 13 14 15 16 17 18 19 20 23 24
+MINUS                : 6
+NOTEQUAL             : 17
+NUMBER               : 4
+OR                   : 
+PLUS                 : 5
+RPARENT              : 5 6 7 8 9 10 13 14 15 16 17 18 19 20 23 24
+SEMI                 : 1 2 3
+TIMES                : 7
+TRUE                 : 11
+error                : 
+
+Nonterminals, with rules where they appear
+
+bool                 : 2 9 19 19
+lisp                 : 1 5 5 6 6 7 7 8 8 9 9 13 13 14 14 15 15 16 16 17 17 18 18 21 22 23
+lispStart            : 0
+list                 : 3 10 20 22 23 24
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . lispStart
+    (1) lispStart -> . lisp SEMI
+    (2) lispStart -> . bool SEMI
+    (3) lispStart -> . list SEMI
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+    (11) bool -> . TRUE
+    (12) bool -> . FALSE
+    (13) bool -> . LPARENT GREATER lisp lisp RPARENT
+    (14) bool -> . LPARENT GREATEREQUAL lisp lisp RPARENT
+    (15) bool -> . LPARENT LESS lisp lisp RPARENT
+    (16) bool -> . LPARENT LESSEQUAL lisp lisp RPARENT
+    (17) bool -> . LPARENT NOTEQUAL lisp lisp RPARENT
+    (18) bool -> . LPARENT EQUAL lisp lisp RPARENT
+    (19) bool -> . LPARENT AND bool bool RPARENT
+    (20) list -> . LPARENT list RPARENT
+    (21) list -> . lisp
+    (22) list -> . lisp list
+    (23) list -> . LPARENT CONS lisp list RPARENT
+    (24) list -> . LPARENT CDR list RPARENT
+    (25) list -> . EMPTY
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 6
+    TRUE            shift and go to state 7
+    FALSE           shift and go to state 8
+    EMPTY           shift and go to state 9
+
+    lispStart                      shift and go to state 1
+    lisp                           shift and go to state 2
+    bool                           shift and go to state 3
+    list                           shift and go to state 4
+
+state 1
+
+    (0) S' -> lispStart .
+
+
+
+state 2
+
+    (1) lispStart -> lisp . SEMI
+    (21) list -> lisp .
+    (22) list -> lisp . list
+    (20) list -> . LPARENT list RPARENT
+    (21) list -> . lisp
+    (22) list -> . lisp list
+    (23) list -> . LPARENT CONS lisp list RPARENT
+    (24) list -> . LPARENT CDR list RPARENT
+    (25) list -> . EMPTY
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+  ! shift/reduce conflict for SEMI resolved as shift
+    SEMI            shift and go to state 11
+    LPARENT         shift and go to state 13
+    EMPTY           shift and go to state 9
+    NUMBER          shift and go to state 5
+
+  ! SEMI            [ reduce using rule 21 (list -> lisp .) ]
+
+    lisp                           shift and go to state 10
+    list                           shift and go to state 12
+
+state 3
+
+    (2) lispStart -> bool . SEMI
+
+    SEMI            shift and go to state 14
+
+
+state 4
+
+    (3) lispStart -> list . SEMI
+
+    SEMI            shift and go to state 15
+
+
+state 5
+
+    (4) lisp -> NUMBER .
+
+    SEMI            reduce using rule 4 (lisp -> NUMBER .)
+    LPARENT         reduce using rule 4 (lisp -> NUMBER .)
+    EMPTY           reduce using rule 4 (lisp -> NUMBER .)
+    NUMBER          reduce using rule 4 (lisp -> NUMBER .)
+    RPARENT         reduce using rule 4 (lisp -> NUMBER .)
+
+
+state 6
+
+    (5) lisp -> LPARENT . PLUS lisp lisp RPARENT
+    (6) lisp -> LPARENT . MINUS lisp lisp RPARENT
+    (7) lisp -> LPARENT . TIMES lisp lisp RPARENT
+    (8) lisp -> LPARENT . DIV lisp lisp RPARENT
+    (9) lisp -> LPARENT . IF bool lisp lisp RPARENT
+    (10) lisp -> LPARENT . CAR list RPARENT
+    (13) bool -> LPARENT . GREATER lisp lisp RPARENT
+    (14) bool -> LPARENT . GREATEREQUAL lisp lisp RPARENT
+    (15) bool -> LPARENT . LESS lisp lisp RPARENT
+    (16) bool -> LPARENT . LESSEQUAL lisp lisp RPARENT
+    (17) bool -> LPARENT . NOTEQUAL lisp lisp RPARENT
+    (18) bool -> LPARENT . EQUAL lisp lisp RPARENT
+    (19) bool -> LPARENT . AND bool bool RPARENT
+    (20) list -> LPARENT . list RPARENT
+    (23) list -> LPARENT . CONS lisp list RPARENT
+    (24) list -> LPARENT . CDR list RPARENT
+    (20) list -> . LPARENT list RPARENT
+    (21) list -> . lisp
+    (22) list -> . lisp list
+    (23) list -> . LPARENT CONS lisp list RPARENT
+    (24) list -> . LPARENT CDR list RPARENT
+    (25) list -> . EMPTY
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    PLUS            shift and go to state 16
+    MINUS           shift and go to state 17
+    TIMES           shift and go to state 18
+    DIV             shift and go to state 19
+    IF              shift and go to state 20
+    CAR             shift and go to state 21
+    GREATER         shift and go to state 23
+    GREATEREQUAL    shift and go to state 24
+    LESS            shift and go to state 25
+    LESSEQUAL       shift and go to state 26
+    NOTEQUAL        shift and go to state 27
+    EQUAL           shift and go to state 28
+    AND             shift and go to state 29
+    CONS            shift and go to state 30
+    CDR             shift and go to state 31
+    LPARENT         shift and go to state 13
+    EMPTY           shift and go to state 9
+    NUMBER          shift and go to state 5
+
+    lisp                           shift and go to state 10
+    list                           shift and go to state 22
+
+state 7
+
+    (11) bool -> TRUE .
+
+    SEMI            reduce using rule 11 (bool -> TRUE .)
+    NUMBER          reduce using rule 11 (bool -> TRUE .)
+    LPARENT         reduce using rule 11 (bool -> TRUE .)
+    TRUE            reduce using rule 11 (bool -> TRUE .)
+    FALSE           reduce using rule 11 (bool -> TRUE .)
+    RPARENT         reduce using rule 11 (bool -> TRUE .)
+
+
+state 8
+
+    (12) bool -> FALSE .
+
+    SEMI            reduce using rule 12 (bool -> FALSE .)
+    NUMBER          reduce using rule 12 (bool -> FALSE .)
+    LPARENT         reduce using rule 12 (bool -> FALSE .)
+    TRUE            reduce using rule 12 (bool -> FALSE .)
+    FALSE           reduce using rule 12 (bool -> FALSE .)
+    RPARENT         reduce using rule 12 (bool -> FALSE .)
+
+
+state 9
+
+    (25) list -> EMPTY .
+
+    SEMI            reduce using rule 25 (list -> EMPTY .)
+    RPARENT         reduce using rule 25 (list -> EMPTY .)
+
+
+state 10
+
+    (21) list -> lisp .
+    (22) list -> lisp . list
+    (20) list -> . LPARENT list RPARENT
+    (21) list -> . lisp
+    (22) list -> . lisp list
+    (23) list -> . LPARENT CONS lisp list RPARENT
+    (24) list -> . LPARENT CDR list RPARENT
+    (25) list -> . EMPTY
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    SEMI            reduce using rule 21 (list -> lisp .)
+    RPARENT         reduce using rule 21 (list -> lisp .)
+    LPARENT         shift and go to state 13
+    EMPTY           shift and go to state 9
+    NUMBER          shift and go to state 5
+
+    lisp                           shift and go to state 10
+    list                           shift and go to state 12
+
+state 11
+
+    (1) lispStart -> lisp SEMI .
+
+    $end            reduce using rule 1 (lispStart -> lisp SEMI .)
+
+
+state 12
+
+    (22) list -> lisp list .
+
+    SEMI            reduce using rule 22 (list -> lisp list .)
+    RPARENT         reduce using rule 22 (list -> lisp list .)
+
+
+state 13
+
+    (20) list -> LPARENT . list RPARENT
+    (23) list -> LPARENT . CONS lisp list RPARENT
+    (24) list -> LPARENT . CDR list RPARENT
+    (5) lisp -> LPARENT . PLUS lisp lisp RPARENT
+    (6) lisp -> LPARENT . MINUS lisp lisp RPARENT
+    (7) lisp -> LPARENT . TIMES lisp lisp RPARENT
+    (8) lisp -> LPARENT . DIV lisp lisp RPARENT
+    (9) lisp -> LPARENT . IF bool lisp lisp RPARENT
+    (10) lisp -> LPARENT . CAR list RPARENT
+    (20) list -> . LPARENT list RPARENT
+    (21) list -> . lisp
+    (22) list -> . lisp list
+    (23) list -> . LPARENT CONS lisp list RPARENT
+    (24) list -> . LPARENT CDR list RPARENT
+    (25) list -> . EMPTY
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    CONS            shift and go to state 30
+    CDR             shift and go to state 31
+    PLUS            shift and go to state 16
+    MINUS           shift and go to state 17
+    TIMES           shift and go to state 18
+    DIV             shift and go to state 19
+    IF              shift and go to state 20
+    CAR             shift and go to state 21
+    LPARENT         shift and go to state 13
+    EMPTY           shift and go to state 9
+    NUMBER          shift and go to state 5
+
+    list                           shift and go to state 22
+    lisp                           shift and go to state 10
+
+state 14
+
+    (2) lispStart -> bool SEMI .
+
+    $end            reduce using rule 2 (lispStart -> bool SEMI .)
+
+
+state 15
+
+    (3) lispStart -> list SEMI .
+
+    $end            reduce using rule 3 (lispStart -> list SEMI .)
+
+
+state 16
+
+    (5) lisp -> LPARENT PLUS . lisp lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 33
+
+state 17
+
+    (6) lisp -> LPARENT MINUS . lisp lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 34
+
+state 18
+
+    (7) lisp -> LPARENT TIMES . lisp lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 35
+
+state 19
+
+    (8) lisp -> LPARENT DIV . lisp lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 36
+
+state 20
+
+    (9) lisp -> LPARENT IF . bool lisp lisp RPARENT
+    (11) bool -> . TRUE
+    (12) bool -> . FALSE
+    (13) bool -> . LPARENT GREATER lisp lisp RPARENT
+    (14) bool -> . LPARENT GREATEREQUAL lisp lisp RPARENT
+    (15) bool -> . LPARENT LESS lisp lisp RPARENT
+    (16) bool -> . LPARENT LESSEQUAL lisp lisp RPARENT
+    (17) bool -> . LPARENT NOTEQUAL lisp lisp RPARENT
+    (18) bool -> . LPARENT EQUAL lisp lisp RPARENT
+    (19) bool -> . LPARENT AND bool bool RPARENT
+
+    TRUE            shift and go to state 7
+    FALSE           shift and go to state 8
+    LPARENT         shift and go to state 37
+
+    bool                           shift and go to state 38
+
+state 21
+
+    (10) lisp -> LPARENT CAR . list RPARENT
+    (20) list -> . LPARENT list RPARENT
+    (21) list -> . lisp
+    (22) list -> . lisp list
+    (23) list -> . LPARENT CONS lisp list RPARENT
+    (24) list -> . LPARENT CDR list RPARENT
+    (25) list -> . EMPTY
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    LPARENT         shift and go to state 13
+    EMPTY           shift and go to state 9
+    NUMBER          shift and go to state 5
+
+    list                           shift and go to state 39
+    lisp                           shift and go to state 10
+
+state 22
+
+    (20) list -> LPARENT list . RPARENT
+
+    RPARENT         shift and go to state 40
+
+
+state 23
+
+    (13) bool -> LPARENT GREATER . lisp lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 41
+
+state 24
+
+    (14) bool -> LPARENT GREATEREQUAL . lisp lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 42
+
+state 25
+
+    (15) bool -> LPARENT LESS . lisp lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 43
+
+state 26
+
+    (16) bool -> LPARENT LESSEQUAL . lisp lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 44
+
+state 27
+
+    (17) bool -> LPARENT NOTEQUAL . lisp lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 45
+
+state 28
+
+    (18) bool -> LPARENT EQUAL . lisp lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 46
+
+state 29
+
+    (19) bool -> LPARENT AND . bool bool RPARENT
+    (11) bool -> . TRUE
+    (12) bool -> . FALSE
+    (13) bool -> . LPARENT GREATER lisp lisp RPARENT
+    (14) bool -> . LPARENT GREATEREQUAL lisp lisp RPARENT
+    (15) bool -> . LPARENT LESS lisp lisp RPARENT
+    (16) bool -> . LPARENT LESSEQUAL lisp lisp RPARENT
+    (17) bool -> . LPARENT NOTEQUAL lisp lisp RPARENT
+    (18) bool -> . LPARENT EQUAL lisp lisp RPARENT
+    (19) bool -> . LPARENT AND bool bool RPARENT
+
+    TRUE            shift and go to state 7
+    FALSE           shift and go to state 8
+    LPARENT         shift and go to state 37
+
+    bool                           shift and go to state 47
+
+state 30
+
+    (23) list -> LPARENT CONS . lisp list RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 48
+
+state 31
+
+    (24) list -> LPARENT CDR . list RPARENT
+    (20) list -> . LPARENT list RPARENT
+    (21) list -> . lisp
+    (22) list -> . lisp list
+    (23) list -> . LPARENT CONS lisp list RPARENT
+    (24) list -> . LPARENT CDR list RPARENT
+    (25) list -> . EMPTY
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    LPARENT         shift and go to state 13
+    EMPTY           shift and go to state 9
+    NUMBER          shift and go to state 5
+
+    list                           shift and go to state 49
+    lisp                           shift and go to state 10
+
+state 32
+
+    (5) lisp -> LPARENT . PLUS lisp lisp RPARENT
+    (6) lisp -> LPARENT . MINUS lisp lisp RPARENT
+    (7) lisp -> LPARENT . TIMES lisp lisp RPARENT
+    (8) lisp -> LPARENT . DIV lisp lisp RPARENT
+    (9) lisp -> LPARENT . IF bool lisp lisp RPARENT
+    (10) lisp -> LPARENT . CAR list RPARENT
+
+    PLUS            shift and go to state 16
+    MINUS           shift and go to state 17
+    TIMES           shift and go to state 18
+    DIV             shift and go to state 19
+    IF              shift and go to state 20
+    CAR             shift and go to state 21
+
+
+state 33
+
+    (5) lisp -> LPARENT PLUS lisp . lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 50
+
+state 34
+
+    (6) lisp -> LPARENT MINUS lisp . lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 51
+
+state 35
+
+    (7) lisp -> LPARENT TIMES lisp . lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 52
+
+state 36
+
+    (8) lisp -> LPARENT DIV lisp . lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 53
+
+state 37
+
+    (13) bool -> LPARENT . GREATER lisp lisp RPARENT
+    (14) bool -> LPARENT . GREATEREQUAL lisp lisp RPARENT
+    (15) bool -> LPARENT . LESS lisp lisp RPARENT
+    (16) bool -> LPARENT . LESSEQUAL lisp lisp RPARENT
+    (17) bool -> LPARENT . NOTEQUAL lisp lisp RPARENT
+    (18) bool -> LPARENT . EQUAL lisp lisp RPARENT
+    (19) bool -> LPARENT . AND bool bool RPARENT
+
+    GREATER         shift and go to state 23
+    GREATEREQUAL    shift and go to state 24
+    LESS            shift and go to state 25
+    LESSEQUAL       shift and go to state 26
+    NOTEQUAL        shift and go to state 27
+    EQUAL           shift and go to state 28
+    AND             shift and go to state 29
+
+
+state 38
+
+    (9) lisp -> LPARENT IF bool . lisp lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 54
+
+state 39
+
+    (10) lisp -> LPARENT CAR list . RPARENT
+
+    RPARENT         shift and go to state 55
+
+
+state 40
+
+    (20) list -> LPARENT list RPARENT .
+
+    SEMI            reduce using rule 20 (list -> LPARENT list RPARENT .)
+    RPARENT         reduce using rule 20 (list -> LPARENT list RPARENT .)
+
+
+state 41
+
+    (13) bool -> LPARENT GREATER lisp . lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 56
+
+state 42
+
+    (14) bool -> LPARENT GREATEREQUAL lisp . lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 57
+
+state 43
+
+    (15) bool -> LPARENT LESS lisp . lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 58
+
+state 44
+
+    (16) bool -> LPARENT LESSEQUAL lisp . lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 59
+
+state 45
+
+    (17) bool -> LPARENT NOTEQUAL lisp . lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 60
+
+state 46
+
+    (18) bool -> LPARENT EQUAL lisp . lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 61
+
+state 47
+
+    (19) bool -> LPARENT AND bool . bool RPARENT
+    (11) bool -> . TRUE
+    (12) bool -> . FALSE
+    (13) bool -> . LPARENT GREATER lisp lisp RPARENT
+    (14) bool -> . LPARENT GREATEREQUAL lisp lisp RPARENT
+    (15) bool -> . LPARENT LESS lisp lisp RPARENT
+    (16) bool -> . LPARENT LESSEQUAL lisp lisp RPARENT
+    (17) bool -> . LPARENT NOTEQUAL lisp lisp RPARENT
+    (18) bool -> . LPARENT EQUAL lisp lisp RPARENT
+    (19) bool -> . LPARENT AND bool bool RPARENT
+
+    TRUE            shift and go to state 7
+    FALSE           shift and go to state 8
+    LPARENT         shift and go to state 37
+
+    bool                           shift and go to state 62
+
+state 48
+
+    (23) list -> LPARENT CONS lisp . list RPARENT
+    (20) list -> . LPARENT list RPARENT
+    (21) list -> . lisp
+    (22) list -> . lisp list
+    (23) list -> . LPARENT CONS lisp list RPARENT
+    (24) list -> . LPARENT CDR list RPARENT
+    (25) list -> . EMPTY
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    LPARENT         shift and go to state 13
+    EMPTY           shift and go to state 9
+    NUMBER          shift and go to state 5
+
+    lisp                           shift and go to state 10
+    list                           shift and go to state 63
+
+state 49
+
+    (24) list -> LPARENT CDR list . RPARENT
+
+    RPARENT         shift and go to state 64
+
+
+state 50
+
+    (5) lisp -> LPARENT PLUS lisp lisp . RPARENT
+
+    RPARENT         shift and go to state 65
+
+
+state 51
+
+    (6) lisp -> LPARENT MINUS lisp lisp . RPARENT
+
+    RPARENT         shift and go to state 66
+
+
+state 52
+
+    (7) lisp -> LPARENT TIMES lisp lisp . RPARENT
+
+    RPARENT         shift and go to state 67
+
+
+state 53
+
+    (8) lisp -> LPARENT DIV lisp lisp . RPARENT
+
+    RPARENT         shift and go to state 68
+
+
+state 54
+
+    (9) lisp -> LPARENT IF bool lisp . lisp RPARENT
+    (4) lisp -> . NUMBER
+    (5) lisp -> . LPARENT PLUS lisp lisp RPARENT
+    (6) lisp -> . LPARENT MINUS lisp lisp RPARENT
+    (7) lisp -> . LPARENT TIMES lisp lisp RPARENT
+    (8) lisp -> . LPARENT DIV lisp lisp RPARENT
+    (9) lisp -> . LPARENT IF bool lisp lisp RPARENT
+    (10) lisp -> . LPARENT CAR list RPARENT
+
+    NUMBER          shift and go to state 5
+    LPARENT         shift and go to state 32
+
+    lisp                           shift and go to state 69
+
+state 55
+
+    (10) lisp -> LPARENT CAR list RPARENT .
+
+    SEMI            reduce using rule 10 (lisp -> LPARENT CAR list RPARENT .)
+    LPARENT         reduce using rule 10 (lisp -> LPARENT CAR list RPARENT .)
+    EMPTY           reduce using rule 10 (lisp -> LPARENT CAR list RPARENT .)
+    NUMBER          reduce using rule 10 (lisp -> LPARENT CAR list RPARENT .)
+    RPARENT         reduce using rule 10 (lisp -> LPARENT CAR list RPARENT .)
+
+
+state 56
+
+    (13) bool -> LPARENT GREATER lisp lisp . RPARENT
+
+    RPARENT         shift and go to state 70
+
+
+state 57
+
+    (14) bool -> LPARENT GREATEREQUAL lisp lisp . RPARENT
+
+    RPARENT         shift and go to state 71
+
+
+state 58
+
+    (15) bool -> LPARENT LESS lisp lisp . RPARENT
+
+    RPARENT         shift and go to state 72
+
+
+state 59
+
+    (16) bool -> LPARENT LESSEQUAL lisp lisp . RPARENT
+
+    RPARENT         shift and go to state 73
+
+
+state 60
+
+    (17) bool -> LPARENT NOTEQUAL lisp lisp . RPARENT
+
+    RPARENT         shift and go to state 74
+
+
+state 61
+
+    (18) bool -> LPARENT EQUAL lisp lisp . RPARENT
+
+    RPARENT         shift and go to state 75
+
+
+state 62
+
+    (19) bool -> LPARENT AND bool bool . RPARENT
+
+    RPARENT         shift and go to state 76
+
+
+state 63
+
+    (23) list -> LPARENT CONS lisp list . RPARENT
+
+    RPARENT         shift and go to state 77
+
+
+state 64
+
+    (24) list -> LPARENT CDR list RPARENT .
+
+    SEMI            reduce using rule 24 (list -> LPARENT CDR list RPARENT .)
+    RPARENT         reduce using rule 24 (list -> LPARENT CDR list RPARENT .)
+
+
+state 65
+
+    (5) lisp -> LPARENT PLUS lisp lisp RPARENT .
+
+    SEMI            reduce using rule 5 (lisp -> LPARENT PLUS lisp lisp RPARENT .)
+    LPARENT         reduce using rule 5 (lisp -> LPARENT PLUS lisp lisp RPARENT .)
+    EMPTY           reduce using rule 5 (lisp -> LPARENT PLUS lisp lisp RPARENT .)
+    NUMBER          reduce using rule 5 (lisp -> LPARENT PLUS lisp lisp RPARENT .)
+    RPARENT         reduce using rule 5 (lisp -> LPARENT PLUS lisp lisp RPARENT .)
+
+
+state 66
+
+    (6) lisp -> LPARENT MINUS lisp lisp RPARENT .
+
+    SEMI            reduce using rule 6 (lisp -> LPARENT MINUS lisp lisp RPARENT .)
+    LPARENT         reduce using rule 6 (lisp -> LPARENT MINUS lisp lisp RPARENT .)
+    EMPTY           reduce using rule 6 (lisp -> LPARENT MINUS lisp lisp RPARENT .)
+    NUMBER          reduce using rule 6 (lisp -> LPARENT MINUS lisp lisp RPARENT .)
+    RPARENT         reduce using rule 6 (lisp -> LPARENT MINUS lisp lisp RPARENT .)
+
+
+state 67
+
+    (7) lisp -> LPARENT TIMES lisp lisp RPARENT .
+
+    SEMI            reduce using rule 7 (lisp -> LPARENT TIMES lisp lisp RPARENT .)
+    LPARENT         reduce using rule 7 (lisp -> LPARENT TIMES lisp lisp RPARENT .)
+    EMPTY           reduce using rule 7 (lisp -> LPARENT TIMES lisp lisp RPARENT .)
+    NUMBER          reduce using rule 7 (lisp -> LPARENT TIMES lisp lisp RPARENT .)
+    RPARENT         reduce using rule 7 (lisp -> LPARENT TIMES lisp lisp RPARENT .)
+
+
+state 68
+
+    (8) lisp -> LPARENT DIV lisp lisp RPARENT .
+
+    SEMI            reduce using rule 8 (lisp -> LPARENT DIV lisp lisp RPARENT .)
+    LPARENT         reduce using rule 8 (lisp -> LPARENT DIV lisp lisp RPARENT .)
+    EMPTY           reduce using rule 8 (lisp -> LPARENT DIV lisp lisp RPARENT .)
+    NUMBER          reduce using rule 8 (lisp -> LPARENT DIV lisp lisp RPARENT .)
+    RPARENT         reduce using rule 8 (lisp -> LPARENT DIV lisp lisp RPARENT .)
+
+
+state 69
+
+    (9) lisp -> LPARENT IF bool lisp lisp . RPARENT
+
+    RPARENT         shift and go to state 78
+
+
+state 70
+
+    (13) bool -> LPARENT GREATER lisp lisp RPARENT .
+
+    SEMI            reduce using rule 13 (bool -> LPARENT GREATER lisp lisp RPARENT .)
+    NUMBER          reduce using rule 13 (bool -> LPARENT GREATER lisp lisp RPARENT .)
+    LPARENT         reduce using rule 13 (bool -> LPARENT GREATER lisp lisp RPARENT .)
+    TRUE            reduce using rule 13 (bool -> LPARENT GREATER lisp lisp RPARENT .)
+    FALSE           reduce using rule 13 (bool -> LPARENT GREATER lisp lisp RPARENT .)
+    RPARENT         reduce using rule 13 (bool -> LPARENT GREATER lisp lisp RPARENT .)
+
+
+state 71
+
+    (14) bool -> LPARENT GREATEREQUAL lisp lisp RPARENT .
+
+    SEMI            reduce using rule 14 (bool -> LPARENT GREATEREQUAL lisp lisp RPARENT .)
+    NUMBER          reduce using rule 14 (bool -> LPARENT GREATEREQUAL lisp lisp RPARENT .)
+    LPARENT         reduce using rule 14 (bool -> LPARENT GREATEREQUAL lisp lisp RPARENT .)
+    TRUE            reduce using rule 14 (bool -> LPARENT GREATEREQUAL lisp lisp RPARENT .)
+    FALSE           reduce using rule 14 (bool -> LPARENT GREATEREQUAL lisp lisp RPARENT .)
+    RPARENT         reduce using rule 14 (bool -> LPARENT GREATEREQUAL lisp lisp RPARENT .)
+
+
+state 72
+
+    (15) bool -> LPARENT LESS lisp lisp RPARENT .
+
+    SEMI            reduce using rule 15 (bool -> LPARENT LESS lisp lisp RPARENT .)
+    NUMBER          reduce using rule 15 (bool -> LPARENT LESS lisp lisp RPARENT .)
+    LPARENT         reduce using rule 15 (bool -> LPARENT LESS lisp lisp RPARENT .)
+    TRUE            reduce using rule 15 (bool -> LPARENT LESS lisp lisp RPARENT .)
+    FALSE           reduce using rule 15 (bool -> LPARENT LESS lisp lisp RPARENT .)
+    RPARENT         reduce using rule 15 (bool -> LPARENT LESS lisp lisp RPARENT .)
+
+
+state 73
+
+    (16) bool -> LPARENT LESSEQUAL lisp lisp RPARENT .
+
+    SEMI            reduce using rule 16 (bool -> LPARENT LESSEQUAL lisp lisp RPARENT .)
+    NUMBER          reduce using rule 16 (bool -> LPARENT LESSEQUAL lisp lisp RPARENT .)
+    LPARENT         reduce using rule 16 (bool -> LPARENT LESSEQUAL lisp lisp RPARENT .)
+    TRUE            reduce using rule 16 (bool -> LPARENT LESSEQUAL lisp lisp RPARENT .)
+    FALSE           reduce using rule 16 (bool -> LPARENT LESSEQUAL lisp lisp RPARENT .)
+    RPARENT         reduce using rule 16 (bool -> LPARENT LESSEQUAL lisp lisp RPARENT .)
+
+
+state 74
+
+    (17) bool -> LPARENT NOTEQUAL lisp lisp RPARENT .
+
+    SEMI            reduce using rule 17 (bool -> LPARENT NOTEQUAL lisp lisp RPARENT .)
+    NUMBER          reduce using rule 17 (bool -> LPARENT NOTEQUAL lisp lisp RPARENT .)
+    LPARENT         reduce using rule 17 (bool -> LPARENT NOTEQUAL lisp lisp RPARENT .)
+    TRUE            reduce using rule 17 (bool -> LPARENT NOTEQUAL lisp lisp RPARENT .)
+    FALSE           reduce using rule 17 (bool -> LPARENT NOTEQUAL lisp lisp RPARENT .)
+    RPARENT         reduce using rule 17 (bool -> LPARENT NOTEQUAL lisp lisp RPARENT .)
+
+
+state 75
+
+    (18) bool -> LPARENT EQUAL lisp lisp RPARENT .
+
+    SEMI            reduce using rule 18 (bool -> LPARENT EQUAL lisp lisp RPARENT .)
+    NUMBER          reduce using rule 18 (bool -> LPARENT EQUAL lisp lisp RPARENT .)
+    LPARENT         reduce using rule 18 (bool -> LPARENT EQUAL lisp lisp RPARENT .)
+    TRUE            reduce using rule 18 (bool -> LPARENT EQUAL lisp lisp RPARENT .)
+    FALSE           reduce using rule 18 (bool -> LPARENT EQUAL lisp lisp RPARENT .)
+    RPARENT         reduce using rule 18 (bool -> LPARENT EQUAL lisp lisp RPARENT .)
+
+
+state 76
+
+    (19) bool -> LPARENT AND bool bool RPARENT .
+
+    SEMI            reduce using rule 19 (bool -> LPARENT AND bool bool RPARENT .)
+    NUMBER          reduce using rule 19 (bool -> LPARENT AND bool bool RPARENT .)
+    LPARENT         reduce using rule 19 (bool -> LPARENT AND bool bool RPARENT .)
+    TRUE            reduce using rule 19 (bool -> LPARENT AND bool bool RPARENT .)
+    FALSE           reduce using rule 19 (bool -> LPARENT AND bool bool RPARENT .)
+    RPARENT         reduce using rule 19 (bool -> LPARENT AND bool bool RPARENT .)
+
+
+state 77
+
+    (23) list -> LPARENT CONS lisp list RPARENT .
+
+    SEMI            reduce using rule 23 (list -> LPARENT CONS lisp list RPARENT .)
+    RPARENT         reduce using rule 23 (list -> LPARENT CONS lisp list RPARENT .)
+
+
+state 78
+
+    (9) lisp -> LPARENT IF bool lisp lisp RPARENT .
+
+    SEMI            reduce using rule 9 (lisp -> LPARENT IF bool lisp lisp RPARENT .)
+    LPARENT         reduce using rule 9 (lisp -> LPARENT IF bool lisp lisp RPARENT .)
+    EMPTY           reduce using rule 9 (lisp -> LPARENT IF bool lisp lisp RPARENT .)
+    NUMBER          reduce using rule 9 (lisp -> LPARENT IF bool lisp lisp RPARENT .)
+    RPARENT         reduce using rule 9 (lisp -> LPARENT IF bool lisp lisp RPARENT .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for SEMI in state 2 resolved as shift
