@@ -15,7 +15,7 @@ def p_lispStart_2(p):
 def p_lispStart_3(p):
   'lispStart : list SEMI'
   p[0] = p[1]
-############################
+############################        
 
 
 ############################################
@@ -122,7 +122,11 @@ def p_bool_8(p):
 #Compares two values two values with a logical 'and' and returns a boolean vluae
 def p_bool_9(p):
   'bool : LPARENT AND bool bool RPARENT'
-  p[0] = ['if',p[2],p[3]]
+  p[0] = ['and',p[3],p[4]]
+  
+def p_bool_10(p):
+  'bool : LPARENT OR bool bool RPARENT'
+  p[0] = ['or',p[3],p[4]]
   
 ###############################################
 
@@ -153,7 +157,7 @@ def p_list_6(p):
 
 def p_list_7(p):
   'list : EMPTY'
-  p[0] = ['list',p[1]]
+  p[0] = ['list',p[0]]
 
 def p_error(p):
   print("Syntax error in input!")
