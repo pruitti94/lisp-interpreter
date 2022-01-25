@@ -64,9 +64,8 @@ def cons_helper(tree, newValue):
 def eval_list(tree):
   myNewList = []
 
-  if tree[0] == 'list' and tree[1] != '()':
-    print('THIS LIST IS EMPTY')
-    return([])
+  if tree[0] == 'list' and tree[1] != None:
+    return(tree[1])
     
   elif tree[0] == 'list' and tree[1] == None:
     print('THIS LIST IS EMPTY')
