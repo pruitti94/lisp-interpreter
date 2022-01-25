@@ -19,6 +19,8 @@ def eval_num(tree):
   if tree[1] == '+' or tree[1] == '-' or tree[1] == '*' or tree[1] == '/':
     v1 = eval(tree[2])
     v2 = eval(tree[3])
+    if type(v1) != float or type(v2) != float:
+        return 'DOES NOT MAKE SENSE!'
     if tree[1] == '+':
       return v1+v2
     elif tree[1] == '*':
@@ -40,13 +42,17 @@ def eval_num(tree):
         return eval(tree[3])
         
 def cdr_helper(tree):
+    print('cdr helper method here')
     if not tree:
         #print('CANNOT CDR ON EMPTY LIST!!!!')
         return('CANNOT CDR ON EMPTY LIST!!!!')
     newList = []
-    for x in tree[1:]:
-        newList.append(x)
-    return newList
+    #for x in tree[1:]:
+    #    newList.append(x)
+    #print(newList)
+    tree.pop(0)
+    print(tree)
+    return tree
 
 def car_helper(tree):
     if not tree:
@@ -57,8 +63,9 @@ def car_helper(tree):
 def cons_helper(tree, newValue):
     print('ORIGINAL TREE')
     print(tree)
-    tree.append(newValue)
+    tree.insert(0,newValue)
     print('NEW TREE')
+    print(tree)
     return tree
     
 def eval_list(tree):
@@ -72,6 +79,7 @@ def eval_list(tree):
     return([]);
 
   elif tree[0] == 'cdr':
+    print('this is the cdr method')
     return cdr_helper(eval(tree[1]))
     
   elif tree[0] == 'car':
@@ -87,7 +95,7 @@ def eval_list(tree):
     return eval(y[0])
     
   elif tree[0] == 'cons':
-    print('hello')
+    print('hello, this is the cons method')
     return cons_helper(eval(tree[2]), (tree[1]))
 
 def eval_bool(tree):
@@ -182,7 +190,14 @@ def main():
       #if isinstance(answer,str):
       #  print('\nEVALUATION ERROR: '+answer+'\n')
       #else:
-      print(str(answer)+'\n')
+      if type(answer) == list:
+        print('the answer is a list')
+        print('the answer is ' +str(answer))
+        print(len(answer))
+        for i in range(len(answer)):
+            print(eval(answer[i]))
+      else:
+        print('the answer is ' +str(answer)+ '\n')
     except Exception as inst:
       print(inst.args[0])
        
