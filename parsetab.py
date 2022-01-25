@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'AND CAR CAR CDR CDR CONS CONS DIV EQUAL FALSE GREATER GREATEREQUAL IF LESS LESSEQUAL LPARENT MINUS NOTEQUAL NUMBER OR PLUS RPARENT SEMI TIMES TRUElispStart : lisp SEMIlispStart : bool SEMIlispStart : list SEMIlisp : NUMBERlisp : LPARENT PLUS lisp lisp RPARENTlisp : LPARENT MINUS lisp lisp RPARENTlisp : LPARENT TIMES lisp lisp RPARENTlisp : LPARENT DIV lisp lisp RPARENTlisp : LPARENT IF bool lisp lisp RPARENTlisp : LPARENT CAR list RPARENTbool : TRUEbool : FALSEbool : LPARENT GREATER lisp lisp RPARENTbool : LPARENT GREATEREQUAL lisp lisp RPARENTbool : LPARENT LESS lisp lisp RPARENTbool : LPARENT LESSEQUAL lisp lisp RPARENTbool : LPARENT NOTEQUAL lisp lisp RPARENTbool : LPARENT EQUAL lisp lisp RPARENTbool : LPARENT AND bool bool RPARENTlist : LPARENT list RPARENTlist : lisplist : lisp listlist : LPARENT CONS lisp list RPARENTlist : LPARENT CDR list RPARENT'
+_lr_signature = 'AND CAR CAR CDR CDR CONS CONS DIV EMPTY EQUAL FALSE GREATER GREATEREQUAL IF LESS LESSEQUAL LPARENT MINUS NOTEQUAL NUMBER OR PLUS RPARENT SEMI TIMES TRUElispStart : lisp SEMIlispStart : bool SEMIlispStart : list SEMIlisp : NUMBERlisp : LPARENT PLUS lisp lisp RPARENTlisp : LPARENT MINUS lisp lisp RPARENTlisp : LPARENT TIMES lisp lisp RPARENTlisp : LPARENT DIV lisp lisp RPARENTlisp : LPARENT IF bool lisp lisp RPARENTlisp : LPARENT CAR list RPARENTbool : TRUEbool : FALSEbool : LPARENT GREATER lisp lisp RPARENTbool : LPARENT GREATEREQUAL lisp lisp RPARENTbool : LPARENT LESS lisp lisp RPARENTbool : LPARENT LESSEQUAL lisp lisp RPARENTbool : LPARENT NOTEQUAL lisp lisp RPARENTbool : LPARENT EQUAL lisp lisp RPARENTbool : LPARENT AND bool bool RPARENTbool : LPARENT OR bool bool RPARENTlist : LPARENT list RPARENTlist : lisplist : lisp listlist : LPARENT CONS lisp list RPARENTlist : LPARENT CDR list RPARENTlist : EMPTY'
     
-_lr_action_items = {'NUMBER':([0,2,5,6,7,8,9,12,15,16,17,18,20,22,23,24,25,26,27,29,30,32,33,34,35,37,40,41,42,43,44,45,47,53,54,64,65,66,67,69,70,71,72,73,74,75,77,],[5,5,-4,5,-11,-12,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,-10,-5,-6,-7,-8,-13,-14,-15,-16,-17,-18,-19,-9,]),'LPARENT':([0,2,5,6,7,8,9,12,15,16,17,18,19,20,22,23,24,25,26,27,28,29,30,32,33,34,35,37,40,41,42,43,44,45,46,47,53,54,64,65,66,67,69,70,71,72,73,74,75,77,],[6,12,-4,12,-11,-12,12,12,31,31,31,31,36,12,31,31,31,31,31,31,36,31,12,31,31,31,31,31,31,31,31,31,31,31,36,12,31,-10,-5,-6,-7,-8,-13,-14,-15,-16,-17,-18,-19,-9,]),'TRUE':([0,7,8,19,28,46,69,70,71,72,73,74,75,],[7,-11,-12,7,7,7,-13,-14,-15,-16,-17,-18,-19,]),'FALSE':([0,7,8,19,28,46,69,70,71,72,73,74,75,],[8,-11,-12,8,8,8,-13,-14,-15,-16,-17,-18,-19,]),'$end':([1,10,13,14,],[0,-1,-2,-3,]),'SEMI':([2,3,4,5,7,8,9,11,39,54,63,64,65,66,67,69,70,71,72,73,74,75,76,77,],[10,13,14,-4,-11,-12,-21,-22,-20,-10,-24,-5,-6,-7,-8,-13,-14,-15,-16,-17,-18,-19,-23,-9,]),'RPARENT':([5,7,8,9,11,21,38,39,48,49,50,51,52,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,],[-4,-11,-12,-21,-22,39,54,-20,63,64,65,66,67,-10,69,70,71,72,73,74,75,76,-24,-5,-6,-7,-8,77,-13,-14,-15,-16,-17,-18,-19,-23,-9,]),'PLUS':([6,12,31,],[15,15,15,]),'MINUS':([6,12,31,],[16,16,16,]),'TIMES':([6,12,31,],[17,17,17,]),'DIV':([6,12,31,],[18,18,18,]),'IF':([6,12,31,],[19,19,19,]),'CAR':([6,12,31,],[20,20,20,]),'GREATER':([6,36,],[22,22,]),'GREATEREQUAL':([6,36,],[23,23,]),'LESS':([6,36,],[24,24,]),'LESSEQUAL':([6,36,],[25,25,]),'NOTEQUAL':([6,36,],[26,26,]),'EQUAL':([6,36,],[27,27,]),'AND':([6,36,],[28,28,]),'CONS':([6,12,],[29,29,]),'CDR':([6,12,],[30,30,]),}
+_lr_action_items = {'NUMBER':([0,2,5,6,7,8,10,13,16,17,18,19,21,23,24,25,26,27,28,31,32,34,35,36,37,39,42,43,44,45,46,47,50,56,57,68,69,70,71,73,74,75,76,77,78,79,80,82,],[5,5,-4,5,-11,-12,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,-10,-5,-6,-7,-8,-13,-14,-15,-16,-17,-18,-19,-20,-9,]),'LPARENT':([0,2,5,6,7,8,10,13,16,17,18,19,20,21,23,24,25,26,27,28,29,30,31,32,34,35,36,37,39,42,43,44,45,46,47,48,49,50,56,57,68,69,70,71,73,74,75,76,77,78,79,80,82,],[6,13,-4,13,-11,-12,13,13,33,33,33,33,38,13,33,33,33,33,33,33,38,38,33,13,33,33,33,33,33,33,33,33,33,33,33,38,38,13,33,-10,-5,-6,-7,-8,-13,-14,-15,-16,-17,-18,-19,-20,-9,]),'TRUE':([0,7,8,20,29,30,48,49,73,74,75,76,77,78,79,80,],[7,-11,-12,7,7,7,7,7,-13,-14,-15,-16,-17,-18,-19,-20,]),'FALSE':([0,7,8,20,29,30,48,49,73,74,75,76,77,78,79,80,],[8,-11,-12,8,8,8,8,8,-13,-14,-15,-16,-17,-18,-19,-20,]),'EMPTY':([0,2,5,6,10,13,21,32,50,57,68,69,70,71,82,],[9,9,-4,9,9,9,9,9,9,-10,-5,-6,-7,-8,-9,]),'$end':([1,11,14,15,],[0,-1,-2,-3,]),'SEMI':([2,3,4,5,7,8,9,10,12,41,57,67,68,69,70,71,73,74,75,76,77,78,79,80,81,82,],[11,14,15,-4,-11,-12,-26,-22,-23,-21,-10,-25,-5,-6,-7,-8,-13,-14,-15,-16,-17,-18,-19,-20,-24,-9,]),'RPARENT':([5,7,8,9,10,12,22,40,41,51,52,53,54,55,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,],[-4,-11,-12,-26,-22,-23,41,57,-21,67,68,69,70,71,-10,73,74,75,76,77,78,79,80,81,-25,-5,-6,-7,-8,82,-13,-14,-15,-16,-17,-18,-19,-20,-24,-9,]),'PLUS':([6,13,33,],[16,16,16,]),'MINUS':([6,13,33,],[17,17,17,]),'TIMES':([6,13,33,],[18,18,18,]),'DIV':([6,13,33,],[19,19,19,]),'IF':([6,13,33,],[20,20,20,]),'CAR':([6,13,33,],[21,21,21,]),'GREATER':([6,38,],[23,23,]),'GREATEREQUAL':([6,38,],[24,24,]),'LESS':([6,38,],[25,25,]),'LESSEQUAL':([6,38,],[26,26,]),'NOTEQUAL':([6,38,],[27,27,]),'EQUAL':([6,38,],[28,28,]),'AND':([6,38,],[29,29,]),'OR':([6,38,],[30,30,]),'CONS':([6,13,],[31,31,]),'CDR':([6,13,],[32,32,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'lispStart':([0,],[1,]),'lisp':([0,2,6,9,12,15,16,17,18,20,22,23,24,25,26,27,29,30,32,33,34,35,37,40,41,42,43,44,45,47,53,],[2,9,9,9,9,32,33,34,35,9,40,41,42,43,44,45,47,9,49,50,51,52,53,55,56,57,58,59,60,9,68,]),'bool':([0,19,28,46,],[3,37,46,61,]),'list':([0,2,6,9,12,20,30,47,],[4,11,21,11,21,38,48,62,]),}
+_lr_goto_items = {'lispStart':([0,],[1,]),'lisp':([0,2,6,10,13,16,17,18,19,21,23,24,25,26,27,28,31,32,34,35,36,37,39,42,43,44,45,46,47,50,56,],[2,10,10,10,10,34,35,36,37,10,42,43,44,45,46,47,50,10,52,53,54,55,56,58,59,60,61,62,63,10,72,]),'bool':([0,20,29,30,48,49,],[3,39,48,49,64,65,]),'list':([0,2,6,10,13,21,32,50,],[4,12,22,12,22,40,51,66,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -37,18 +37,20 @@ _lr_productions = [
   ('lisp -> LPARENT DIV lisp lisp RPARENT','lisp',5,'p_lisp_5','LISPParser.py',51),
   ('lisp -> LPARENT IF bool lisp lisp RPARENT','lisp',6,'p_lisp_6','LISPParser.py',57),
   ('lisp -> LPARENT CAR list RPARENT','lisp',4,'p_lisp_7','LISPParser.py',62),
-  ('bool -> TRUE','bool',1,'p_bool_1','LISPParser.py',75),
-  ('bool -> FALSE','bool',1,'p_bool_2','LISPParser.py',81),
-  ('bool -> LPARENT GREATER lisp lisp RPARENT','bool',5,'p_bool_3','LISPParser.py',87),
-  ('bool -> LPARENT GREATEREQUAL lisp lisp RPARENT','bool',5,'p_bool_4','LISPParser.py',93),
-  ('bool -> LPARENT LESS lisp lisp RPARENT','bool',5,'p_bool_5','LISPParser.py',99),
-  ('bool -> LPARENT LESSEQUAL lisp lisp RPARENT','bool',5,'p_bool_6','LISPParser.py',105),
-  ('bool -> LPARENT NOTEQUAL lisp lisp RPARENT','bool',5,'p_bool_7','LISPParser.py',111),
-  ('bool -> LPARENT EQUAL lisp lisp RPARENT','bool',5,'p_bool_8','LISPParser.py',117),
-  ('bool -> LPARENT AND bool bool RPARENT','bool',5,'p_bool_9','LISPParser.py',123),
-  ('list -> LPARENT list RPARENT','list',3,'p_list_1','LISPParser.py',132),
-  ('list -> lisp','list',1,'p_list_2','LISPParser.py',136),
-  ('list -> lisp list','list',2,'p_list_3','LISPParser.py',140),
-  ('list -> LPARENT CONS lisp list RPARENT','list',5,'p_list_5','LISPParser.py',145),
-  ('list -> LPARENT CDR list RPARENT','list',4,'p_list_6','LISPParser.py',150),
+  ('bool -> TRUE','bool',1,'p_bool_1','LISPParser.py',76),
+  ('bool -> FALSE','bool',1,'p_bool_2','LISPParser.py',82),
+  ('bool -> LPARENT GREATER lisp lisp RPARENT','bool',5,'p_bool_3','LISPParser.py',88),
+  ('bool -> LPARENT GREATEREQUAL lisp lisp RPARENT','bool',5,'p_bool_4','LISPParser.py',94),
+  ('bool -> LPARENT LESS lisp lisp RPARENT','bool',5,'p_bool_5','LISPParser.py',100),
+  ('bool -> LPARENT LESSEQUAL lisp lisp RPARENT','bool',5,'p_bool_6','LISPParser.py',106),
+  ('bool -> LPARENT NOTEQUAL lisp lisp RPARENT','bool',5,'p_bool_7','LISPParser.py',112),
+  ('bool -> LPARENT EQUAL lisp lisp RPARENT','bool',5,'p_bool_8','LISPParser.py',118),
+  ('bool -> LPARENT AND bool bool RPARENT','bool',5,'p_bool_9','LISPParser.py',124),
+  ('bool -> LPARENT OR bool bool RPARENT','bool',5,'p_bool_10','LISPParser.py',128),
+  ('list -> LPARENT list RPARENT','list',3,'p_list_1','LISPParser.py',137),
+  ('list -> lisp','list',1,'p_list_2','LISPParser.py',141),
+  ('list -> lisp list','list',2,'p_list_3','LISPParser.py',145),
+  ('list -> LPARENT CONS lisp list RPARENT','list',5,'p_list_5','LISPParser.py',150),
+  ('list -> LPARENT CDR list RPARENT','list',4,'p_list_6','LISPParser.py',155),
+  ('list -> EMPTY','list',1,'p_list_7','LISPParser.py',159),
 ]

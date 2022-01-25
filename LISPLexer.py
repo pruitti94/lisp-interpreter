@@ -2,7 +2,7 @@ import ply.lex as lex
 
 reserved = { 'if': 'IF', 'and': 'AND', 'or': 'OR', 'car': 'CAR', 'cdr': 'CDR', 'cons': 'CONS', 'true': 'TRUE', 'false': 'FALSE' }
 
-tokens = ['LPARENT','RPARENT','SEMI','CAR','CDR','CONS','GREATER','GREATEREQUAL','LESS','LESSEQUAL','NOTEQUAL','EQUAL','PLUS','MINUS','TIMES','DIV','NUMBER'] + \
+tokens = ['LPARENT','RPARENT','SEMI','CAR','CDR','CONS','GREATER','GREATEREQUAL','LESS','LESSEQUAL','NOTEQUAL','EQUAL','PLUS','MINUS','TIMES','DIV','NUMBER','EMPTY'] + \
   list(reserved.values())
 
 t_TRUE = r'[tT][rR][uU][eE]'
@@ -26,6 +26,8 @@ t_PLUS = r'\+'
 t_MINUS = r'-'
 t_TIMES = r'\*'
 t_DIV = r'/'
+t_EMPTY = r'\(\)'
+
 
 def t_NUMBER(t):
   r'[-+]?[0-9]+(\.([0-9]+)?)?'
@@ -45,11 +47,10 @@ def t_error(t):
 lexer = lex.lex()
 ## Test it out
 data = '''
-(if (>= 2 3) 40 50)
 '''
 #
 ## Give the lexer some input
-print("Tokenizing: ",data)
+#print("Tokenizing: ",data)
 lexer.input(data)
 
 ## Tokenize

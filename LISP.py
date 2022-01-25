@@ -1,37 +1,159 @@
 from LISPParser import parser
 
-def eval_expression(tree):
+def eval(tree):
+  if tree[0] == 'list' or tree[0] == 'cdr' or tree[0] == 'car' or tree[0] == 'cons':
+    #print('this is a list operation')
+    return eval_list(tree)
+  elif tree[0] == 'bool' or tree[0] == 'comparison' or tree[0] == 'and' or tree[0] == 'or' :
+    #print('this is a boolean or comparison')
+    return eval_bool(tree)
+  elif tree[0] == 'num' or tree[0] == 'aop' or tree[0] == 'if':
+    #print('this is a lisp operation');
+    return eval_num(tree)
+  else:
+    return None
+
+def eval_num(tree):
   if tree[0] == 'num':
     return tree[1]
-  elif tree[0] == 'id':
-    return 'ERROR: Cannot evaluate ID '+tree[1]
-  elif tree[0] == '+' or tree[0] == '-' or tree[0] == '*' or tree[0] == '/':
-    v1 = eval_expression(tree[1])
-    if isinstance(v1,str):
-      return v1
-    v2 = eval_expression(tree[2])
-    if isinstance(v2,str):
-      return v2
-    if tree[0] == '+':
+  if tree[1] == '+' or tree[1] == '-' or tree[1] == '*' or tree[1] == '/':
+    v1 = eval(tree[2])
+    v2 = eval(tree[3])
+    if tree[1] == '+':
       return v1+v2
-    elif tree[0] == '-':
-      return v1-v2
-    elif tree[0] == '*':
+    elif tree[1] == '*':
       return v1*v2
-    elif v2 != 0:
+    elif tree[1] == '-':
+      return v1-v2
+    if v2 != 0:
       return v1/v2
     else:
-      return 'ERROR: Divide by Zero'
-  elif tree[0] == 'if':
-    v1 = eval_expression(tree[1])
-    if isinstance(v1,str):
-      return v1
-    if v1 != 0:
-      return eval_expression(tree[2])
+      return('ERROR DIVIDE BY ZERO!')
+  if tree[0] == 'if':
+    print('THIS IS AN IF STATEMENT')
+    result = eval(tree[1])
+    if (result == True):
+        print('TRUE!!!!')
+        return eval(tree[2])
     else:
-      return eval_expression(tree[3])
-  else: #with clause
-    return "WITH not implemented!"
+        print('FALSE!!!!!')
+        return eval(tree[3])
+        
+def cdr_helper(tree):
+    if not tree:
+        #print('CANNOT CDR ON EMPTY LIST!!!!')
+        return('CANNOT CDR ON EMPTY LIST!!!!')
+    newList = []
+    for x in tree[1:]:
+        newList.append(x)
+    return newList
+
+def car_helper(tree):
+    if not tree:
+        return('CANNOT CAR ON EMPTY LIST!!!!')
+    x = tree[1][1][0]
+    return x
+
+def cons_helper(tree, newValue):
+    print('ORIGINAL TREE')
+    print(tree)
+    tree.append(newValue)
+    print('NEW TREE')
+    return tree
+    
+def eval_list(tree):
+  myNewList = []
+
+  if tree[0] == 'list' and tree[1] != '()':
+    print('THIS LIST IS EMPTY')
+    return([])
+    
+  elif tree[0] == 'list' and tree[1] == None:
+    print('THIS LIST IS EMPTY')
+    return([]);
+
+  elif tree[0] == 'cdr':
+    return cdr_helper(eval(tree[1]))
+    
+  elif tree[0] == 'car':
+    print('this is the car method lol')
+    if tree[1][1] == None:
+        return('CANNOT CAR ON EMPTY LIST')
+    #print(tree)
+    #print('TEST TEST TEST')
+    y = eval(tree[1])
+    if y == None:
+        return('')
+    eval(y)
+    return eval(y[0])
+    
+  elif tree[0] == 'cons':
+    print('hello')
+    return cons_helper(eval(tree[2]), (tree[1]))
+
+def eval_bool(tree):
+  print('THIS IS THE BOOL EVALUATION METHOD')
+  if tree[1] == ('True'):
+    return True
+  elif tree[1] == ('False'):
+    return False
+  elif tree[0] == ('and'):
+    v1 = eval(tree[1])
+    v2 = eval(tree[2])
+    return v1 and v2
+  elif tree[0] == ('or'):
+    v1 = eval(tree[1])
+    v2 = eval(tree[2])
+    return v1 or v2
+  elif tree[0] == 'comparison':
+    print('THIS IS A COMPARISON!')
+    if tree[1] == '>':
+        print('This is a greater than sign!')
+        v1 = eval(tree[2])
+        v2 = eval(tree[3])
+        print(v1)
+        print(v2)
+        return (v1 > v2)
+
+    elif tree[1][1] == '<':
+        print('This is a less than sign!')
+        v1 = eval(tree[2])
+        v2 = eval(tree[3])
+        print(v1)
+        print(v2)
+        return (v1 < v2)
+            
+    elif tree[1][1] == '>=':
+        print('This is a greater than or equal to sign!')
+        v1 = eval(tree[2])
+        v2 = eval(tree[3])
+        print(v1)
+        print(v2)
+        return (v1 >= v2)
+            
+    elif tree[1][1] == '<=':
+        print('This is a less than or equal to sign!')
+        v1 = eval(tree[2])
+        v2 = eval(tree[3])
+        print(v1)
+        print(v2)
+        return (v1 <= v2)
+
+    elif tree[1][1] == '=':
+        print('This is an equal to sign!')
+        v1 = eval(tree[2])
+        v2 = eval(tree[3])
+        print(v1)
+        print(v2)
+        return (v1 == v2)
+
+    elif tree[1][1] == '<>':
+        print('This is an equal to sign!')
+        v1 = eval(tree[2])
+        v2 = eval(tree[3])
+        print(v1)
+        print(v2)
+        return (v1 != v2)
 
 def read_input():
   result = ''
@@ -56,14 +178,14 @@ def main():
       print(inst.args[0])
       continue
     print(tree)
-    '''try:
-      answer = eval_expression(tree)
-      if isinstance(answer,str):
-        print('\nEVALUATION ERROR: '+answer+'\n')
-      else:
-        print('\nThe value is '+str(answer)+'\n')
+    try:
+      answer = eval(tree)
+      #if isinstance(answer,str):
+      #  print('\nEVALUATION ERROR: '+answer+'\n')
+      #else:
+      print(str(answer)+'\n')
     except Exception as inst:
       print(inst.args[0])
-      '''
+       
  
 main()

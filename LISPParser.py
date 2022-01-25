@@ -37,19 +37,19 @@ def p_lisp_2(p):
 #Subtracts the second element from the first element
 def p_lisp_3(p):
   'lisp : LPARENT MINUS lisp lisp RPARENT'
-  p[0] = ['-',p[3],p[4]]
+  p[0] = ['aop','-',p[3],p[4]]
 
 #MULTIPLICATION
 #Multiplies two elements
 def p_lisp_4(p):
   'lisp : LPARENT TIMES lisp lisp RPARENT'
-  p[0] = ['*',p[3],p[4]]
+  p[0] = ['aop','*',p[3],p[4]]
 
 #DIVISION
 #Divides the first element by the second element
 def p_lisp_5(p):
   'lisp : LPARENT DIV lisp lisp RPARENT'
-  p[0] = ['/',p[3],p[4]]
+  p[0] = ['aop','/',p[3],p[4]]
 
 #IF
 #Checks a boolean condition and returns value based on said result
@@ -62,7 +62,8 @@ def p_lisp_7(p):
   'lisp : LPARENT CAR list RPARENT'
   p[0] = ['car',p[3]]
 
-############################################
+#########################
+###################
 
 
 ###############################################
@@ -121,7 +122,11 @@ def p_bool_8(p):
 #Compares two values two values with a logical 'and' and returns a boolean vluae
 def p_bool_9(p):
   'bool : LPARENT AND bool bool RPARENT'
-  p[0] = ['if',p[2],p[3]]
+  p[0] = ['and',p[3],p[4]]
+  
+def p_bool_10(p):
+  'bool : LPARENT OR bool bool RPARENT'
+  p[0] = ['or',p[3],p[4]]
   
 ###############################################
 
@@ -149,6 +154,10 @@ def p_list_5(p):
 def p_list_6(p):
   'list : LPARENT CDR list RPARENT'
   p[0] = ['cdr',p[3]]
+
+def p_list_7(p):
+  'list : EMPTY'
+  p[0] = ['list',p[0]]
 
 def p_error(p):
   print("Syntax error in input!")
